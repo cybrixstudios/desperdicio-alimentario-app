@@ -1,0 +1,15 @@
+# Comparador de Desperdicio Alimentario (Excel)
+
+App para comparar archivos Excel de desperdicio alimentario de distintos años.
+
+## Funciones:
+- 📂 Subida de archivos Excel comprimidos en ZIP
+- 📊 Comparación de productos, recetas, totales y más
+- 📈 Visualización con gráficos
+- 💾 Exportar resultados como PNG, Excel y PDF
+
+## Cómo usar localmente
+
+```bash
+pip install -r requirements.txt
+streamlit run app_excel_comparador_export.py
