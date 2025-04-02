@@ -1,4 +1,5 @@
 
+
 import streamlit as st
 import pdfplumber
 import pandas as pd
@@ -75,7 +76,7 @@ if pdf_2018 and pdf_2023:
         df.to_excel(writer, index=False, sheet_name="Comparacion")
     st.download_button("⬇️ Descargar datos como Excel", excel_buf.getvalue(), file_name="comparacion_datos.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
-    # Exportar informe como PDF
+    # Exportar informe como PDF (simple con texto + tabla)
     def generar_pdf(df):
         pdf = FPDF()
         pdf.add_page()
@@ -83,10 +84,7 @@ if pdf_2018 and pdf_2023:
         pdf.cell(200, 10, txt="Informe de comparación de desperdicio alimentario", ln=True, align='C')
         pdf.ln(10)
         for i, row in df.iterrows():
-            a1 = row["Año1"] or 0
-            a2 = row["Año2"] or 0
-            cambio = row["Cambio (%)"] or 0
-            texto = f"{row['Categoría']}: Año1 = {a1:.2f} kg, Año2 = {a2:.2f} kg, Cambio = {cambio:.2f}%"
+            texto = f"{row['Categoría']}: Año1 = {row['Año1']:.2f} kg, Año2 = {row['Año2']:.2f} kg, Cambio = {row['Cambio (%)']:.2f}%"
             pdf.cell(0, 10, txt=texto, ln=True)
         output = io.BytesIO()
         pdf.output(output)
