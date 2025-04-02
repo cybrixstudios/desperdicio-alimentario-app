@@ -1,0 +1,7 @@
+streamlit
+pdfplumber
+pandas
+matplotlib
+seaborn
+fpdf
+XlsxWriter
